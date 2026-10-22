@@ -1,0 +1,44 @@
+services:
+  wordpress:
+    image: wordpress:latest
+    # WordPress connects to the MySQL service using these values.
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress_password
+    ports:
+      - "8080:80" # Open WordPress at http://localhost:8080
+    volumes:
+      # Keeps installed themes, plugins, and uploads between container restarts.
+      - wordpress_data:/var/www/html
+      # Makes this project's child theme available inside WordPress.
+      - ./wordpress/wp-content/themes/digital-agency-child:/var/www/html/wp-content/themes/digital-agency-child
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      # A named volume preserves the database after `docker compose down`.
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root_password
+    ports:
+      - "8081:80" # Open phpMyAdmin at http://localhost:8081
+    depends_on:
+      - mysql
+
+volumes:
+  wordpress_data:
+  mysql_data:

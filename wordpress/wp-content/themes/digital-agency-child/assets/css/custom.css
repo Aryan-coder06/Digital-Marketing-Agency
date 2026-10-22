@@ -1,0 +1,56 @@
+/* Design tokens */
+:root {
+    --primary: #6C5CE7;
+    --secondary: #00B894;
+    --dark: #1E1E2F;
+    --background: #F8F9FC;
+    --text: #444444;
+    --white: #FFFFFF;
+}
+
+body { background: var(--background); color: var(--text); }
+.section-title { color: var(--dark); }
+.site-header { transition: box-shadow 0.3s ease, background 0.3s ease; }
+.site-header.is-scrolled { background: rgba(255, 255, 255, 0.96); box-shadow: 0 4px 18px rgba(30, 30, 47, 0.08); }
+
+/* Buttons */
+.primary-button .elementor-button,
+.primary-button {
+    background: var(--primary);
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+.primary-button:hover .elementor-button,
+.primary-button:hover { background: #5848cf; transform: translateY(-2px); }
+
+/* Services */
+.service-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(30, 30, 47, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); }
+
+/* Portfolio */
+.portfolio-card { overflow: hidden; border-radius: 14px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(30, 30, 47, 0.14); }
+.portfolio-card img { transition: transform 0.3s ease; }
+.portfolio-card:hover img { transform: scale(1.04); }
+
+/* Statistics and testimonials */
+.stat-card, .testimonial-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(30, 30, 47, 0.08);
+}
+.testimonial-card { border-left: 4px solid var(--secondary); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .service-card, .portfolio-card, .stat-card, .testimonial-card { margin-bottom: 16px; }
+}
+
+@media (max-width: 480px) {
+    .primary-button .elementor-button { width: 100%; }
+}

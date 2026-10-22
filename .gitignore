@@ -1,0 +1,19 @@
+.env
+.DS_Store
+.idea/
+.vscode/
+
+# Local WordPress runtime files (the custom child theme remains tracked)
+wordpress/wp-admin/
+wordpress/wp-includes/
+wordpress/wp-content/plugins/
+wordpress/wp-content/uploads/
+wordpress/wp-content/upgrade/
+wordpress/*.php
+wordpress/wp-config.php
+!wordpress/wp-content/themes/digital-agency-child/
+!wordpress/wp-content/themes/digital-agency-child/**
+
+# Local database and Docker data
+mysql-data/
+*.sql
